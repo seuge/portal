@@ -138,11 +138,10 @@ function active_calendar(bind, user){
             .attr("x", function(d) { return lp + halfhour(d)*z; })
             .attr("y", function(d) { return (day(d)-1)*z + tp; });
 
-        d3.json('data.json', function(data){
-           d3.select('.' + this.user).selectAll("rect.halfhour")
-             .attr("class", function(d) { return "halfhour alevel" + getactivelevel(data[this.user][d]['v']); })
+        d3.json('api/userdata/'+ this.user, function(data){
+           d3.select('.' + data['username']).selectAll("rect.halfhour")
+             .attr("class", function(d) { return "halfhour alevel" + getactivelevel(data[d]['v']); })
         })
-		
 
         svg.append("svg:text")
         .text(this.user)
