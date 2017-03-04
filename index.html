@@ -168,7 +168,7 @@ d3.json('data.json', function(data){
     d3.select('.lixianghui').selectAll("rect.halfhour")
     .attr("class", function(d) { return "halfhour alevel" + getactivelevel(obj[d]['v']); })
 
-	obj = data['lixianghui']
+	obj = data['sunlili']
     d3.select('.sunlili').selectAll("rect.halfhour")
     .attr("class", function(d) { return "halfhour alevel" + getactivelevel(obj[d]['v']); })
  })
