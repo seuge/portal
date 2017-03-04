@@ -160,12 +160,17 @@ var calendar_sunlili = new active_calendar("#user-calendar2", "sunlili");
 calendar_sunlili.render();
 
 d3.json('data.json', function(data){
+	var obj = data['gerundong'].parseJSON()
     d3.select('.gerundong').selectAll("rect.halfhour")
-    .attr("class", function(d) { return "halfhour alevel" + getactivelevel(data['gerundong'][d]['v']); })
+    .attr("class", function(d) { return "halfhour alevel" + getactivelevel(obj.[d]['v']); })
+	
+	obj = data['lixianghui'].parseJSON()
     d3.select('.lixianghui').selectAll("rect.halfhour")
-    .attr("class", function(d) { return "halfhour alevel" + getactivelevel(data['lixianghui'][d]['v']); })
+    .attr("class", function(d) { return "halfhour alevel" + getactivelevel(obj.[d]['v']); })
+
+	obj = data['lixianghui'].parseJSON()
     d3.select('.sunlili').selectAll("rect.halfhour")
-    .attr("class", function(d) { return "halfhour alevel" + getactivelevel(data['sunlili'][d]['v']); })
+    .attr("class", function(d) { return "halfhour alevel" + getactivelevel(obj[d]['v']); })
  })
 
 
