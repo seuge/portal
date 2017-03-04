@@ -138,12 +138,6 @@ function active_calendar(bind, user){
             .attr("x", function(d) { return lp + halfhour(d)*z; })
             .attr("y", function(d) { return (day(d)-1)*z + tp; });
 
-        d3.json('data.json', function(data){
-           d3.select('.' + this.user).selectAll("rect.halfhour")
-             .attr("class", function(d) { return "halfhour alevel" + getactivelevel(data[this.user][d]['v']); })
-        })
-		
-
         svg.append("svg:text")
         .text(this.user)
         .attr("transform", function(d, i){return "translate(20," + (-25) + ")";})
@@ -165,8 +159,14 @@ calendar_lixianghui.render();
 var calendar_sunlili = new active_calendar("#user-calendar2", "sunlili");
 calendar_sunlili.render();
 
-a = d3.select("#user-calendar2").selectAll("rect.halfhour")
-b = d3.select("#user-calendar2").selectAll("rect.halfhour")
+d3.json('data.json', function(data){
+    d3.select('.gerundong').selectAll("rect.halfhour")
+    .attr("class", function(d) { return "halfhour alevel" + getactivelevel(data['gerundong'][d]['v']); })
+    d3.select('.lixianghui').selectAll("rect.halfhour")
+    .attr("class", function(d) { return "halfhour alevel" + getactivelevel(data['lixianghui'][d]['v']); })
+    d3.select('.sunlili').selectAll("rect.halfhour")
+    .attr("class", function(d) { return "halfhour alevel" + getactivelevel(data['sunlili'][d]['v']); })
+ })
 
 
 </script>
